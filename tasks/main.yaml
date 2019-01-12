@@ -1,0 +1,23 @@
+---
+# file: .../ansible/roles/taskwarrior_server/tasks/main.yaml
+# Using a guide:
+#   https://www.vultr.com/docs/install-taskserver-taskd-on-centos-7
+
+
+- name: Install EPEL repository
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: installed
+  become: true
+
+
+- name: Install RPM Build and required tools for buiding
+  package:
+    name:
+      - gcc
+      - gcc-c++
+      - make
+      - rpmdevtools
+      - rpm-sign
+      - rpm-build
+  become: true
